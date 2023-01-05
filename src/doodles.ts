@@ -7,7 +7,6 @@ import {
   User
 } from "../generated/schema"
 
-
 export function handleTransfer(event: TransferEvent): void {
   let doodle = Doodle.load(event.params.tokenId.toString())
   if (!doodle) {
