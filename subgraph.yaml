@@ -1,0 +1,25 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Doodles
+    network: mainnet
+    source:
+      address: "0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e"
+      abi: Doodles
+      startBlock: 16287507
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Doodle
+        - User
+      abis:
+        - name: Doodles
+          file: ./abis/Doodles.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/doodles.ts

@@ -1,0 +1,13 @@
+type Doodle @entity {
+  id: ID!
+  contentURI: String!
+  createdAtTimestamp: BigInt!
+  creator: User!
+  owner: User!
+}
+
+type User @entity {
+  id: ID!
+  doodler: [Doodle!]! @derivedFrom(field: "owner")
+  created: [Doodle!] @derviedFrom(field: "creator")
+}
